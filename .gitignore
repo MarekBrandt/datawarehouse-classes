@@ -22,6 +22,7 @@ lib64/
 parts/
 sdist/
 var/
+Dane/
 *.egg-info/
 .installed.cfg
 *.egg

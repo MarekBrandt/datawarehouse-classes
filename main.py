@@ -141,31 +141,6 @@ def generate_advertisement(file_name, number):
             file.write(ad.bulk_format() + '\n')
 
 
-def generate_questionnaire(file_name, number):
-    with open(file_name, 'w', encoding='utf-8') as file:
-        for i in range(1, number + 1):
-            service_p = fake.service()
-            satisfaction = rand.randint(1, 10)
-            if satisfaction % 3 == 0:
-                ad_seen = 'nie'
-                column = Questionnaire(service_p, satisfaction, ad_seen, '-', '-', '-', '-', '-')
-            else:
-                ad_seen = 'tak'
-                points = rand.randint(1, 10)
-                if points > 3 and (i % 5 < 3):
-                    decision_impact = 'tak'
-                else:
-                    decision_impact = 'nie'
-                num = rand.randint(0, len(advertisements_data) - 1)
-                ad_type = advertisements_data[num].type
-                addr = advertisements_data[num].address
-                service = advertisements_data[num].fk_service
-                column = Questionnaire(service_p, satisfaction, ad_seen, points, decision_impact, ad_type, addr,
-                                       service)
-            questionnaire_data.append(column)
-            file.write(column.csv_format() + '\n')
-
-
 def generate_salon(file_name):
     with open(file_name, 'w', encoding='utf-8') as file:
         for i in range(1, SALONS_COUNT + 1):
@@ -175,8 +150,14 @@ def generate_salon(file_name):
 
 
 def generate_visit(file_name, number, mode):
+    if mode == 'a':
+        start = VISIT_COUNT1 + 1
+        end = VISIT_COUNT1 + VISIT_COUNT2
+    else:
+        start = 1
+        end = VISIT_COUNT1
     with open(file_name, mode, encoding='utf-8') as file:
-        for i in range(1, number + 1):
+        for i in range(start, end):
             num1 = rand.randint(1, len(salons_data) - 1)
             num2 = rand.randint(1, len(customers_data) - 1)
             min_date = datetime.date(t0, 1, 1)
@@ -221,7 +202,7 @@ def generate_service_visit(file_name, mode):
 
 
 def generate_product_amount(file_name, number, mode):
-    if (mode == 'a'):
+    if mode == 'a':
         start = VISIT_COUNT1 + 1
         end = VISIT_COUNT1 + VISIT_COUNT2
     else:
@@ -233,11 +214,21 @@ def generate_product_amount(file_name, number, mode):
             file.write(prod_amo.bulk_format() + '\n')
 
 
-def generate_questionnaire(file_name, number):
-    with open(file_name, 'w', encoding='utf-8') as file:
+def generate_questionnaire(file_name, number, mode):
+    if mode == 'w':
+        visits = visit_data[0:number]
+    else:
+        visits = visit_data[VISIT_COUNT1+1:VISIT_COUNT1+VISIT_COUNT2-1]
+    with open(file_name, mode, encoding='utf-8') as file:
+        used = []
         for i in range(0, number):
 
-            visit = rand.choice(visit_data)
+            not_found = True
+            while not_found:
+                visit = rand.choice(visits)
+                if visit not in used:
+                    used.append(visit)
+                    not_found = False
 
             visit_id = visit.id
 
@@ -253,9 +244,9 @@ def generate_questionnaire(file_name, number):
             else:
                 ad_seen = 'tak'
                 valid_ads = []
-                for i in range(0,len(advertisements_data)-1):
-                    if advertisements_data[i].salon_id == visit.salon_id:
-                        valid_ads.append(advertisements_data[i])
+                for ad in advertisements_data:
+                    if str(ad.salon_id) == str(visit.salon_id):
+                        valid_ads.append(ad)
                 ad_id = str(rand.choice(valid_ads).id)
 
             points = rand.randint(1, 10)
@@ -277,12 +268,14 @@ def generate(time0, time1):
         generate_visit("Dane/wizyty.bulk", VISIT_COUNT1, 'w')
         generate_service_visit("Dane/uslugi_wizyty.bulk", 'w')
         generate_product_amount("Dane/produkty_ilosc.bulk", 800,'w')
-        generate_questionnaire("Dane/ankiety.csv", 100)
+        generate_questionnaire("Dane/ankiety.csv", 200, "w")
     else:
         update_service_prices("Dane/uslugi.bulk")
         generate_visit("Dane/wizyty.bulk", VISIT_COUNT2, 'a')
         generate_service_visit("Dane/uslugi_wizyty.bulk", 'a')
-        generate_product_amount("Dane/produkty_ilosc.bulk", 500 , 'a')
+        generate_product_amount("Dane/produkty_ilosc.bulk", 500, 'a')
+        generate_questionnaire("Dane/ankiety.csv", 100, "a")
+
 
     # generate_portal("Dane/portale.bulk", 10)
 

@@ -6,7 +6,6 @@ class Salon:
         self.building_number = building_number
         self.phone_number = phone_number
 
-
     def bulk_format(self):
         data_format = f'{self.id}|{self.city}|{self.street}|{self.building_number}|{self.phone_number}|'
         return data_format

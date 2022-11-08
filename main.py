@@ -1,11 +1,11 @@
-import random as rand
 import datetime
+import random as rand
+
 from faker import Faker
 from faker.providers import DynamicProvider
 
 from advertisement import Advertisement
 from advertisers import Advertiser
-from company import Company
 from customers import Customer
 from product_amount import ProductAmount
 from products import Product
@@ -22,12 +22,6 @@ t1 = 2017
 
 questionnaire_data = []
 advertisements_data = []
-companies = []
-portals = []
-billboard_address = []
-banner_address = []
-salon_address = []
-companies_portal = []
 services_data = []
 services_data2 = []
 products_data = []

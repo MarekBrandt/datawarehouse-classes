@@ -130,13 +130,12 @@ def generate_advertisement(file_name, number):
     with open(file_name, 'w', encoding='utf-8') as file:
         for i in range(1, number + 1):
             price = rand.randint(50000, 1000000) / 100
-            num1 = rand.randint(0, len(services_data) * 2) * 0.75
-            if num1 >= len(services_data):
+            num1 = rand.randint(1, len(services_data))
+            if rand.randint(1, 10) < 3:
                 num1 = ""
-            num1 = str(num1)
             num2 = rand.randint(1, len(salons_data))
             num3 = rand.randint(1, len(advertisers_data))
-            ad = Advertisement(i, num1, str(num2), str(num3), fake.ad_specialization(), price)
+            ad = Advertisement(i, str(num1), str(num2), str(num3), fake.ad_specialization(), price)
             advertisements_data.append(ad)
             file.write(ad.bulk_format() + '\n')
 
@@ -211,14 +210,22 @@ def generate_service_visit(file_name, mode):
 
 def generate_product_amount(file_name, number, mode):
     if mode == 'a':
-        start = CUSTOMERS_COUNT+1
-        end = len(customers_data)+1
+        start = VISIT_COUNT1+1
+        end = len(visit_data)+1
     else:
         start = 1
         end = VISIT_COUNT1
     with open(file_name, mode, encoding='utf-8') as file:
+        used = []
         for i in range(1, number+1):
-            prod_amo = ProductAmount(rand.randint(start, end), rand.randint(1, len(products_data)),rand.randint(1, 4))
+            not_found = True
+            while not_found:
+                visit_id = rand.randint(start, end)
+                product_id = rand.randint(1, len(products_data))
+                if (visit_id, product_id) not in used:
+                    used.append((visit_id, product_id))
+                    not_found = False
+            prod_amo = ProductAmount(visit_id, product_id,rand.randint(1, 4))
             file.write(prod_amo.bulk_format() + '\n')
 
 

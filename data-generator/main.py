@@ -104,12 +104,12 @@ def generate_products(file_name):
 
 
 def generate_customers(file_name, number, mode):
-    if(mode=='w'):
-        start=1
-        end=number+1
+    if (mode == 'w'):
+        start = 1
+        end = number + 1
     else:
-        start=len(customers_data)+1
-        end=start+number+1
+        start = len(customers_data) + 1
+        end = start + number + 1
     with open(file_name, mode, encoding='utf-8') as file:
         for i in range(start, end):
             cust = Customer(i, fake.first_name(), fake.last_name(), rand.randint(1950, 2010))
@@ -154,7 +154,7 @@ def generate_visit(file_name, mode):
         end = VISIT_COUNT1 + VISIT_COUNT2
     else:
         start = 1
-        end = len(customers_data)+1
+        end = len(customers_data) + 1
     with open(file_name, mode, encoding='utf-8') as file:
         for i in range(start, end):
             num1 = rand.randint(1, len(salons_data))
@@ -166,7 +166,7 @@ def generate_visit(file_name, mode):
                 how_many = 2
             else:
                 how_many = 3
-            for j in range(0,how_many):
+            for j in range(0, how_many):
                 min_date = datetime.date(t0, 1, 1)
                 max_date = datetime.date(t1, 12, 1)
                 reservation_date = fake.date_between_dates(min_date, max_date)
@@ -175,7 +175,7 @@ def generate_visit(file_name, mode):
                 cancel_date = ''
                 if rand.randint(1, 10) == 1:
                     cancel_date = fake.date_between_dates(reservation_date, visit_date)
-                visit = Visit(len(visit_data)+1, num1, num2, str(reservation_date), str(visit_date), str(cancel_date),
+                visit = Visit(len(visit_data) + 1, num1, num2, str(reservation_date), str(visit_date), str(cancel_date),
                               str(rand.randint(5000, 30000) / 100))
                 visit_data.append(visit)
                 file.write(visit.bulk_format() + '\n')
@@ -210,14 +210,14 @@ def generate_service_visit(file_name, mode):
 
 def generate_product_amount(file_name, number, mode):
     if mode == 'a':
-        start = VISIT_COUNT1+1
-        end = len(visit_data)+1
+        start = VISIT_COUNT1 + 1
+        end = len(visit_data) + 1
     else:
         start = 1
         end = VISIT_COUNT1
     with open(file_name, mode, encoding='utf-8') as file:
         used = []
-        for i in range(1, number+1):
+        for i in range(1, number + 1):
             not_found = True
             while not_found:
                 visit_id = rand.randint(start, end)
@@ -225,7 +225,7 @@ def generate_product_amount(file_name, number, mode):
                 if (visit_id, product_id) not in used:
                     used.append((visit_id, product_id))
                     not_found = False
-            prod_amo = ProductAmount(visit_id, product_id,rand.randint(1, 4))
+            prod_amo = ProductAmount(visit_id, product_id, rand.randint(1, 4))
             file.write(prod_amo.bulk_format() + '\n')
 
 
@@ -233,7 +233,7 @@ def generate_questionnaire(file_name, number, mode):
     if mode == 'w':
         visits = visit_data
     else:
-        visits = visit_data[VISIT_COUNT1+1:VISIT_COUNT2-1]
+        visits = visit_data[VISIT_COUNT1 + 1:VISIT_COUNT2 - 1]
     with open(file_name, mode, encoding='utf-8') as file:
         used = []
         for i in range(0, number):
@@ -263,7 +263,7 @@ def generate_questionnaire(file_name, number, mode):
                     if str(ad.salon_id) == str(visit.salon_id):
                         valid_ads.append(ad)
                 if not len(valid_ads):
-                    ad_id=''
+                    ad_id = ''
                 else:
                     ad_id = str(rand.choice(valid_ads).id)
 
@@ -273,10 +273,13 @@ def generate_questionnaire(file_name, number, mode):
             questionnaire_data.append(column)
             file.write(column.csv_format() + '\n')
 
+
 def generate(time0, time1):
+    global t0
+    global t1
     t0 = time0
     t1 = time1
-    if (t0 == 2015):
+    if t0 == 2015:
         generate_services("Dane/uslugi.bulk")
         generate_products("Dane/produkty.bulk")
         generate_customers("Dane/klienci.bulk", 800, "w")
@@ -287,7 +290,7 @@ def generate(time0, time1):
         global VISIT_COUNT1
         VISIT_COUNT1 = len(visit_data)
         generate_service_visit("Dane/uslugi_wizyty.bulk", 'w')
-        generate_product_amount("Dane/produkty_ilosc.bulk", 800,'w')
+        generate_product_amount("Dane/produkty_ilosc.bulk", 800, 'w')
         generate_questionnaire("Dane/ankiety.csv", 200, "w")
     else:
         generate_customers("Dane/klienci.bulk", 500, "a")
@@ -298,12 +301,6 @@ def generate(time0, time1):
         generate_service_visit("Dane/uslugi_wizyty.bulk", 'a')
         generate_product_amount("Dane/produkty_ilosc.bulk", 500, 'a')
         generate_questionnaire("Dane/ankiety.csv", 100, "a")
-
-
-
-    # generate_portal("Dane/portale.bulk", 10)
-
-    # generate_questionnaire("Dane/ankiety.csv", 10)
 
 
 if __name__ == '__main__':

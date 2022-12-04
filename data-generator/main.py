@@ -77,201 +77,244 @@ fake.add_provider(specializations_provider)
 fake.add_provider(ad_specializations_provider)
 
 
-def generate_services(file_name):
-    with open(file_name, 'w', encoding='utf-8') as file:
-        for i in range(0, len(services)):
-            serv = Service(i + 1, services[i], rand.randint(2000, 10000) / 100)
-            services_data.append(serv)
-            file.write(serv.bulk_format() + '\n')
+def generate_services(files):
+    for i in range(0, len(services)):
+        serv = Service(i + 1, services[i], rand.randint(2000, 10000) / 100)
+        services_data.append(serv)
+    for file_name in files:
+        with open(file_name, 'w', encoding='utf-8') as file:
+            for serv in services_data:
+                file.write(serv.bulk_format() + '\n')
 
 
-def update_service_prices(file_name):
-    with open(file_name, 'w', encoding='utf-8') as file:
-        for i in range(0, len(services_data)):
-            serv = services_data[i]
-            new_serv = Service(serv.id, serv.name, serv.price * 1.2)
-            services_data2.append(new_serv)
-            file.write(new_serv.bulk_format() + '\n')
+def update_advertisers(files):
+    for file_name in files:
+        with open(file_name, 'w', encoding='utf-8') as file:
+            for i in range(0, len(advertisers_data)):
+                adv = advertisers_data[i]
+                new_adv = None
+                random_numb = rand.randint(1,10)
+                if random_numb < 2:
+                    new_adv = Advertiser(adv.id, adv.email, adv.name, adv.nip, fake.specialization(), fake.thematic())
+                elif random_numb < 4:
+                    new_adv = Advertiser(adv.id, adv.email, adv.name, adv.nip, adv.specialization, fake.thematic())
+                elif random_numb < 6:
+                    new_adv = Advertiser(adv.id, adv.email, adv.name, adv.nip, fake.specialization(), adv.thematic)
+                else:
+                    new_adv = Advertiser(adv.id, adv.email, adv.name, adv.nip, adv.specialization, adv.thematic)
+                services_data2.append(new_adv)
+                file.write(new_adv.bulk_format() + '\n')
 
 
-def generate_products(file_name):
-    with open(file_name, 'w', encoding='utf-8') as file:
-        for i in range(1, PRODUCTS_COUNT + 1):
-            prod = Product(i, "Product" + str(i), "Brand" + str(rand.randint(1, 8)), "Type" + str(rand.randint(1, 6)),
-                           rand.randint(2000, 20000) / 100)
-            products_data.append(prod)
-            file.write(prod.bulk_format() + '\n')
+def generate_products(files):
+    for i in range(1, PRODUCTS_COUNT + 1):
+        prod = Product(i, "Product" + str(i), "Brand" + str(rand.randint(1, 8)), "Type" + str(rand.randint(1, 6)),
+                       rand.randint(2000, 20000) / 100)
+        products_data.append(prod)
+    for file_name in files:
+        with open(file_name, 'w', encoding='utf-8') as file:
+           for prod in products_data:
+                file.write(prod.bulk_format() + '\n')
 
 
-def generate_customers(file_name, number, mode):
+def generate_customers(files, number, mode):
+    customer_temp = []
     if (mode == 'w'):
         start = 1
         end = number + 1
     else:
         start = len(customers_data) + 1
         end = start + number + 1
-    with open(file_name, mode, encoding='utf-8') as file:
-        for i in range(start, end):
-            cust = Customer(i, fake.first_name(), fake.last_name(), rand.randint(1950, 2010))
-            customers_data.append(cust)
-            file.write(cust.bulk_format() + '\n')
+    for i in range(start, end):
+        cust = Customer(i, fake.first_name(), fake.last_name(), rand.randint(1950, 2010))
+        customers_data.append(cust)
+        customer_temp.append(cust)
+    for file_name in files:
+        with open(file_name, mode, encoding='utf-8') as file:
+            for cust in customer_temp:
+                file.write(cust.bulk_format() + '\n')
 
 
-def generate_advertisers(file_name):
-    with open(file_name, 'w', encoding='utf-8') as file:
-        for i in range(1, ADVERTISERS_COUNT + 1):
-            advertiser = Advertiser(i, "Company" + str(i) + "@gmail.com", "Company" + str(i), fake.msisdn()[3:],
-                                    fake.specialization(), fake.thematic())
-            advertisers_data.append(advertiser)
-            file.write(advertiser.bulk_format() + '\n')
+def generate_advertisers(files):
+    for i in range(1, ADVERTISERS_COUNT + 1):
+        advertiser = Advertiser(i, "Company" + str(i) + "@gmail.com", "Company" + str(i), fake.msisdn()[3:],
+                                fake.specialization(), fake.thematic())
+        advertisers_data.append(advertiser)
+    for file_name in files:
+        with open(file_name, 'w', encoding='utf-8') as file:
+            for advertiser in advertisers_data:
+                file.write(advertiser.bulk_format() + '\n')
 
 
-def generate_advertisement(file_name, number):
-    with open(file_name, 'w', encoding='utf-8') as file:
-        for i in range(1, number + 1):
-            price = rand.randint(50000, 1000000) / 100
-            num1 = rand.randint(1, len(services_data))
-            if rand.randint(1, 10) < 3:
-                num1 = ""
-            num2 = rand.randint(1, len(salons_data))
-            num3 = rand.randint(1, len(advertisers_data))
-            ad = Advertisement(i, str(num1), str(num2), str(num3), fake.ad_specialization(), price)
-            advertisements_data.append(ad)
-            file.write(ad.bulk_format() + '\n')
+def generate_advertisement(files, number):
+    for i in range(1, number + 1):
+        price = rand.randint(50000, 1000000) / 100
+        num1 = rand.randint(1, len(services_data))
+        if rand.randint(1, 10) < 3:
+            num1 = ""
+        num2 = rand.randint(1, len(salons_data))
+        num3 = rand.randint(1, len(advertisers_data))
+        ad = Advertisement(i, str(num1), str(num2), str(num3), fake.ad_specialization(), price)
+        advertisements_data.append(ad)
+    for file_name in files:
+        with open(file_name, 'w', encoding='utf-8') as file:
+            for ad in advertisements_data:
+                file.write(ad.bulk_format() + '\n')
 
 
-def generate_salon(file_name):
-    with open(file_name, 'w', encoding='utf-8') as file:
-        for i in range(1, SALONS_COUNT + 1):
-            salon = Salon(i, fake.city(), fake.street_name(), rand.randint(1, 100), fake.msisdn()[4:])
-            salons_data.append(salon)
-            file.write(salon.bulk_format() + '\n')
+def generate_salon(files):
+    for i in range(1, SALONS_COUNT + 1):
+        salon = Salon(i, fake.city(), fake.street_name(), rand.randint(1, 100), fake.msisdn()[4:])
+        salons_data.append(salon)
+    for file_name in files:
+        with open(file_name, 'w', encoding='utf-8') as file:
+            for salon in salons_data:
+                file.write(salon.bulk_format() + '\n')
 
 
-def generate_visit(file_name, mode):
+def generate_visit(files, mode):
+    visit_temp = []
     if mode == 'a':
         start = VISIT_COUNT1 + 1
         end = VISIT_COUNT1 + VISIT_COUNT2
     else:
         start = 1
         end = len(customers_data) + 1
-    with open(file_name, mode, encoding='utf-8') as file:
-        for i in range(start, end):
-            num1 = rand.randint(1, len(salons_data))
-            num2 = i
-            how_many = rand.randint(0, 10)
-            if how_many < 6:
-                how_many = 1
-            elif how_many < 10:
-                how_many = 2
-            else:
-                how_many = 3
-            for j in range(0, how_many):
-                min_date = datetime.date(t0, 1, 1)
-                max_date = datetime.date(t1, 12, 1)
-                reservation_date = fake.date_between_dates(min_date, max_date)
-                max_visit_date = reservation_date + datetime.timedelta(days=30)
-                visit_date = fake.date_between_dates(reservation_date, max_visit_date)
-                cancel_date = ''
-                if rand.randint(1, 10) == 1:
-                    cancel_date = fake.date_between_dates(reservation_date, visit_date)
-                visit = Visit(len(visit_data) + 1, num1, num2, str(reservation_date), str(visit_date), str(cancel_date),
-                              str(rand.randint(5000, 30000) / 100))
-                visit_data.append(visit)
-                file.write(visit.bulk_format() + '\n')
+
+    for i in range(start, end):
+        num1 = rand.randint(1, len(salons_data))
+        num2 = i
+        how_many = rand.randint(0, 10)
+        if how_many < 6:
+            how_many = 1
+        elif how_many < 10:
+            how_many = 2
+        else:
+            how_many = 3
+        for j in range(0, how_many):
+            min_date = datetime.date(t0, 1, 1)
+            max_date = datetime.date(t1, 12, 1)
+            reservation_date = fake.date_between_dates(min_date, max_date)
+            max_visit_date = reservation_date + datetime.timedelta(days=30)
+            visit_date = fake.date_between_dates(reservation_date, max_visit_date)
+            cancel_date = ''
+            if rand.randint(1, 10) == 1:
+                cancel_date = fake.date_between_dates(reservation_date, visit_date)
+            visit = Visit(len(visit_data) + 1, num1, num2, str(reservation_date), str(visit_date), str(cancel_date),
+                          str(rand.randint(5000, 30000) / 100))
+            visit_data.append(visit)
+            visit_temp.append(visit)
+    for file_name in files:
+        with open(file_name, mode, encoding='utf-8') as file:
+            for visit in visit_temp:
+                    file.write(visit.bulk_format() + '\n')
 
 
-def generate_service_visit(file_name, mode):
-    if (mode == 'a'):
+def generate_service_visit(files, mode):
+    ser_vis_temp = []
+    if mode == 'a':
         start = VISIT_COUNT1 + 1
         end = VISIT_COUNT1 + VISIT_COUNT2 + 1
     else:
         start = 1
         end = VISIT_COUNT1 + 1
 
-    with open(file_name, mode, encoding='utf-8') as file:
-        for i in range(start, end):
-            how_many = rand.randint(0, 10)
-            if how_many < 6:
-                how_many = 1
-            elif how_many < 10:
-                how_many = 2
-            else:
-                how_many = 3
-            service_list = []
-            for j in range(0, how_many):
+    for i in range(start, end):
+        how_many = rand.randint(0, 10)
+        if how_many < 6:
+            how_many = 1
+        elif how_many < 10:
+            how_many = 2
+        else:
+            how_many = 3
+        service_list = []
+        for j in range(0, how_many):
+            service_id = rand.randint(0, len(services_data) - 1) + 1
+            while service_id in service_list:
                 service_id = rand.randint(0, len(services_data) - 1) + 1
-                while service_id in service_list:
-                    service_id = rand.randint(0, len(services_data) - 1) + 1
-                service_list.append(service_id)
-                ser_vis = ServiceVisit(i, service_id)
-                file.write(ser_vis.bulk_format() + '\n')
+            service_list.append(service_id)
+            ser_vis = ServiceVisit(i, service_id)
+            ser_vis_temp.append(ser_vis)
+    for file_name in files:
+        with open(file_name, mode, encoding='utf-8') as file:
+            for ser_vis in ser_vis_temp:
+                    file.write(ser_vis.bulk_format() + '\n')
 
 
-def generate_product_amount(file_name, number, mode):
+def generate_product_amount(files, number, mode):
+    prod_amo_temp = []
     if mode == 'a':
         start = VISIT_COUNT1 + 1
         end = len(visit_data) + 1
     else:
         start = 1
         end = VISIT_COUNT1
-    with open(file_name, mode, encoding='utf-8') as file:
-        used = []
-        for i in range(1, number + 1):
-            not_found = True
-            while not_found:
-                visit_id = rand.randint(start, end)
-                product_id = rand.randint(1, len(products_data))
-                if (visit_id, product_id) not in used:
-                    used.append((visit_id, product_id))
-                    not_found = False
-            prod_amo = ProductAmount(visit_id, product_id, rand.randint(1, 4))
-            file.write(prod_amo.bulk_format() + '\n')
+
+    used = []
+    for i in range(1, number + 1):
+        not_found = True
+        while not_found:
+            visit_id = rand.randint(start, end)
+            product_id = rand.randint(1, len(products_data))
+            if (visit_id, product_id) not in used:
+                used.append((visit_id, product_id))
+                not_found = False
+        prod_amo = ProductAmount(visit_id, product_id, rand.randint(1, 4))
+        prod_amo_temp.append(prod_amo)
+    for file_name in files:
+        with open(file_name, mode, encoding='utf-8') as file:
+            for prod_amo in prod_amo_temp:
+                file.write(prod_amo.bulk_format() + '\n')
 
 
-def generate_questionnaire(file_name, number, mode):
+def generate_questionnaire(files, number, mode):
+    questionnaire_temp = []
     if mode == 'w':
         visits = visit_data
     else:
         visits = visit_data[VISIT_COUNT1 + 1:VISIT_COUNT2 - 1]
-    with open(file_name, mode, encoding='utf-8') as file:
-        used = []
-        for i in range(0, number):
 
-            not_found = True
-            while not_found:
-                visit = rand.choice(visits)
-                if visit not in used:
-                    used.append(visit)
-                    not_found = False
+    used = []
+    for i in range(0, number):
 
-            visit_id = visit.id
+        not_found = True
+        while not_found:
+            visit = rand.choice(visits)
+            if visit not in used:
+                used.append(visit)
+                not_found = False
 
-            ad_id = ""
+        visit_id = visit.id
 
-            if rand.randint(1, 10) < 3:
-                ad_is_cause = 'nie'
+        ad_id = ""
+
+        if rand.randint(1, 10) < 3:
+            ad_is_cause = 'nie'
+        else:
+            ad_is_cause = 'tak'
+
+        if rand.randint(1, 10) < 3:
+            ad_seen = 'nie'
+        else:
+            ad_seen = 'tak'
+            valid_ads = []
+            for ad in advertisements_data:
+                if str(ad.salon_id) == str(visit.salon_id):
+                    valid_ads.append(ad)
+            if not len(valid_ads):
+                ad_id = ''
             else:
-                ad_is_cause = 'tak'
+                ad_id = str(rand.choice(valid_ads).id)
 
-            if rand.randint(1, 10) < 3:
-                ad_seen = 'nie'
-            else:
-                ad_seen = 'tak'
-                valid_ads = []
-                for ad in advertisements_data:
-                    if str(ad.salon_id) == str(visit.salon_id):
-                        valid_ads.append(ad)
-                if not len(valid_ads):
-                    ad_id = ''
-                else:
-                    ad_id = str(rand.choice(valid_ads).id)
+        points = rand.randint(1, 10)
 
-            points = rand.randint(1, 10)
-
-            column = Questionnaire(ad_id, ad_is_cause, ad_seen, points, visit_id)
-            questionnaire_data.append(column)
-            file.write(column.csv_format() + '\n')
+        column = Questionnaire(ad_id, ad_is_cause, ad_seen, points, visit_id)
+        questionnaire_data.append(column)
+        questionnaire_temp.append(column)
+    for file_name in files:
+        with open(file_name, mode, encoding='utf-8') as file:
+            for column in questionnaire_temp:
+                file.write(column.csv_format() + '\n')
 
 
 def generate(time0, time1):
@@ -280,27 +323,27 @@ def generate(time0, time1):
     t0 = time0
     t1 = time1
     if t0 == 2015:
-        generate_services("Dane/uslugi.bulk")
-        generate_products("Dane/produkty.bulk")
-        generate_customers("Dane/klienci.bulk", 800, "w")
-        generate_salon("Dane/salony.bulk")
-        generate_advertisers("Dane/reklamodawcy.bulk")
-        generate_advertisement("Dane/reklamy.bulk", 1000)
-        generate_visit("Dane/wizyty.bulk", 'w')
+        generate_services(["Dane/uslugi.bulk", "Dane/uslugi2.bulk"])
+        generate_products(["Dane/produkty.bulk", "Dane/produkty2.bulk"])
+        generate_customers({"Dane/klienci.bulk", "Dane/klienci2.bulk"}, 800, "w")
+        generate_salon(["Dane/salony.bulk", "Dane/salony2.bulk"])
+        generate_advertisers(["Dane/reklamodawcy.bulk", "Dane/reklamodawcy2.bulk"])
+        generate_advertisement(["Dane/reklamy.bulk", "Dane/reklamy2.bulk"], 1000)
+        generate_visit(["Dane/wizyty.bulk", "Dane/wizyty2.bulk"], 'w')
         global VISIT_COUNT1
         VISIT_COUNT1 = len(visit_data)
-        generate_service_visit("Dane/uslugi_wizyty.bulk", 'w')
-        generate_product_amount("Dane/produkty_ilosc.bulk", 800, 'w')
-        generate_questionnaire("Dane/ankiety.csv", 200, "w")
+        generate_service_visit(["Dane/uslugi_wizyty.bulk", "Dane/uslugi_wizyty2.bulk"], 'w')
+        generate_product_amount(["Dane/produkty_ilosc.bulk", "Dane/produkty_ilosc2.bulk"], 800, 'w')
+        generate_questionnaire(["Dane/ankiety.csv", "Dane/ankiety2.csv"], 200, "w")
     else:
-        generate_customers("Dane/klienci.bulk", 500, "a")
-        update_service_prices("Dane/uslugi.bulk")
-        generate_visit("Dane/wizyty.bulk", 'a')
+        generate_customers(["Dane/klienci2.bulk"], 500, "a")
+        update_advertisers(["Dane/reklamodawcy2.bulk"])
+        generate_visit(["Dane/wizyty2.bulk"], 'a')
         global VISIT_COUNT2
         VISIT_COUNT2 = len(visit_data)
-        generate_service_visit("Dane/uslugi_wizyty.bulk", 'a')
-        generate_product_amount("Dane/produkty_ilosc.bulk", 500, 'a')
-        generate_questionnaire("Dane/ankiety.csv", 100, "a")
+        generate_service_visit(["Dane/uslugi_wizyty2.bulk"], 'a')
+        generate_product_amount(["Dane/produkty_ilosc2.bulk"], 500, 'a')
+        generate_questionnaire(["Dane/ankiety2.csv"], 100, "a")
 
 
 if __name__ == '__main__':

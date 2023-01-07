@@ -1,0 +1,167 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/7/2022 8:13:33 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-18KOAE8"
+  DTS:CreatorName="DESKTOP-18KOAE8\pitya"
+  DTS:DTSID="{039D060D-DB4E-47D0-A642-7E27070A0A7D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.948.0"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Initial_Data"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{5FC7E6ED-6334-45A6-BE3F-754092D47E8A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-18KOAE8]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5DD9FBB9-93A0-49EC-AFB9-AF491DE60567}"
+      DTS:ObjectName="DESKTOP-18KOAE8">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-18KOAE8;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Initial_Data-{5DD9FBB9-93A0-49EC-AFB9-AF491DE60567}DESKTOP-18KOAE8;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-ERH1AKK]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7EE57096-6A00-4DF3-B204-458B8C8A1A46}"
+      DTS:ObjectName="DESKTOP-ERH1AKK">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-ERH1AKK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Initial_Data-{7EE57096-6A00-4DF3-B204-458B8C8A1A46}DESKTOP-ERH1AKK;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-ERH1AKK 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EF55D95E-ECB6-42B9-8ED2-AB378E3C315C}"
+      DTS:ObjectName="DESKTOP-ERH1AKK 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-ERH1AKK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Initial_Data-{EF55D95E-ECB6-42B9-8ED2-AB378E3C315C}DESKTOP-ERH1AKK 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_DATES.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{40850B80-B0AC-48D7-B68C-A5F613E28E9E}"
+      DTS:ObjectName="LOAD_DATES.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\pitya\Desktop\sql\LOAD_DATES.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_DATES.sql 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{D853EA92-5479-4A7C-AECC-BED0F8673C0F}"
+      DTS:ObjectName="LOAD_DATES.sql 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\marek\Downloads\MultidimensionalProject1\sqlki\LOAD_DATES.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_JUNK.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{0331CB6F-B5D1-4652-8B31-D51592C893D6}"
+      DTS:ObjectName="LOAD_JUNK.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\pitya\Desktop\sql\LOAD_JUNK.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_JUNK.sql 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{06E8614F-AE98-41D6-93A7-6586E049DF02}"
+      DTS:ObjectName="LOAD_JUNK.sql 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\marek\Downloads\MultidimensionalProject1\sqlki\LOAD_JUNK.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_Reklama.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{964B69F9-9DF0-4D27-B8DF-A400DBD44B41}"
+      DTS:ObjectName="LOAD_Reklama.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\marek\Downloads\MultidimensionalProject1\sqlki\LOAD_Reklama.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Date Dimension"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{719eb80a-8a93-4164-b2d9-0b6e4faf9f13}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Date Dimension"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7EE57096-6A00-4DF3-B204-458B8C8A1A46}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="LOAD_DATES.sql 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Junk"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1346e100-1531-4244-9994-f8a7f6b982c8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Junk"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EF55D95E-ECB6-42B9-8ED2-AB378E3C315C}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="LOAD_JUNK.sql 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="180,42.4"
+          Id="Package\Load Date Dimension"
+          TopLeft="60,85.383333368202" />
+        <NodeLayout
+          Size="126.4,42.4"
+          Id="Package\Load Junk"
+          TopLeft="284.374996656552,72.3666678522034" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

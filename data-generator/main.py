@@ -175,8 +175,8 @@ def generate_salon(files):
 def generate_visit(files, mode):
     visit_temp = []
     if mode == 'a':
-        start = VISIT_COUNT1 + 1
-        end = VISIT_COUNT1 + VISIT_COUNT2
+        start = 800
+        end = start + 501
     else:
         start = 1
         end = len(customers_data) + 1
@@ -275,14 +275,7 @@ def generate_questionnaire(files, number, mode):
         visits = visit_data[VISIT_COUNT1 + 1:VISIT_COUNT2 - 1]
 
     used = []
-    for i in range(0, number):
-
-        not_found = True
-        while not_found:
-            visit = rand.choice(visits)
-            if visit not in used:
-                used.append(visit)
-                not_found = False
+    for visit in visits:
 
         visit_id = visit.id
 
@@ -297,14 +290,14 @@ def generate_questionnaire(files, number, mode):
             ad_seen = 'nie'
         else:
             ad_seen = 'tak'
-            valid_ads = []
-            for ad in advertisements_data:
-                if str(ad.salon_id) == str(visit.salon_id):
-                    valid_ads.append(ad)
-            if not len(valid_ads):
-                ad_id = ''
-            else:
-                ad_id = str(rand.choice(valid_ads).id)
+        valid_ads = []
+        for ad in advertisements_data:
+            if str(ad.salon_id) == str(visit.salon_id):
+                valid_ads.append(ad)
+        if not len(valid_ads):
+            ad_id = ''
+        else:
+            ad_id = str(rand.choice(valid_ads).id)
 
         points = rand.randint(1, 10)
 
@@ -348,4 +341,4 @@ def generate(time0, time1):
 
 if __name__ == '__main__':
     generate(t0, t1)
-    generate(2017, 2020)
+    generate(2018, 2020)

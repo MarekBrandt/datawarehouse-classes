@@ -1,0 +1,255 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="0f9f3646-beb2-4b2a-8e55-a2d3f5440769" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Beauty Salon</ID>
+  <Name>Beauty Salon</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+      <Value></Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>Beauty Salon</DataSourceID>
+  <Schema>
+    <xs:schema id="Beauty_x0020_Salon" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="Beauty_x0020_Salon" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="865c63b9-b891-4528-8bf9-ed3d0bc5a246">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_Data_" msprop:design-time-name="08d51636-bee6-4330-9ee2-bf07f113fbf5" msprop:DbTableName="Data_" msprop:FriendlyName="Data_" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID_Data" msprop:design-time-name="91f3bf55-cf6a-489d-9146-b51a7af0d8c5" msprop:DbColumnName="ID_Data" msprop:FriendlyName="ID_Data" type="xs:dateTime" />
+                  <xs:element name="Rok" msprop:design-time-name="3b63c25f-0f61-4de6-a70d-a00655853e9a" msprop:DbColumnName="Rok" msprop:FriendlyName="Rok" type="xs:int" minOccurs="0" />
+                  <xs:element name="Miesiac" msprop:design-time-name="ad841cb6-905f-469e-ad4d-d679529e3b5d" msprop:DbColumnName="Miesiac" msprop:FriendlyName="Miesiac" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="11" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Dzien" msprop:design-time-name="98c8e036-e13d-4a65-a151-c2f1a319aed6" msprop:DbColumnName="Dzien" msprop:FriendlyName="Dzien" type="xs:int" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Junk" msprop:design-time-name="7bfe8052-2833-4ac2-ab79-e82fe9656600" msprop:DbTableName="Junk" msprop:FriendlyName="Junk" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID_Junk" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="714248c4-7b48-4140-8200-b4abac33122f" msprop:DbColumnName="ID_Junk" msprop:FriendlyName="ID_Junk" type="xs:int" />
+                  <xs:element name="Kwota_rachunku_przedzial" msprop:design-time-name="982e3179-bda2-4a2c-8339-62dca9d7d3e4" msprop:DbColumnName="Kwota_rachunku_przedzial" msprop:FriendlyName="Kwota_rachunku_przedzial" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="14" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Czy_widzial_reklame" msprop:design-time-name="31ea9306-9a72-41fe-8ac3-ed094794b399" msprop:DbColumnName="Czy_widzial_reklame" msprop:FriendlyName="Czy_widzial_reklame" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="3" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Czy_zarezerwowal_kolejna" msprop:design-time-name="3ff92f46-a073-45d3-b386-4562ad7256ef" msprop:DbColumnName="Czy_zarezerwowal_kolejna" msprop:FriendlyName="Czy_zarezerwowal_kolejna" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="3" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Czy_przyszla_z_powodu_reklamy" msprop:design-time-name="bb324f10-6791-444b-9c84-23967b5596a3" msprop:DbColumnName="Czy_przyszla_z_powodu_reklamy" msprop:FriendlyName="Czy_przyszla_z_powodu_reklamy" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="3" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Klient" msprop:design-time-name="6a843e53-88bf-4c6d-a36b-e1395b937b5e" msprop:DbTableName="Klient" msprop:FriendlyName="Klient" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID_Klienta" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="b24d9a90-595a-4123-b28b-478377e4324e" msprop:DbColumnName="ID_Klienta" msprop:FriendlyName="ID_Klienta" type="xs:int" />
+                  <xs:element name="Imie_i_nazwisko" msprop:design-time-name="21425ea7-49eb-4025-87a9-ca85875a5a5c" msprop:DbColumnName="Imie_i_nazwisko" msprop:FriendlyName="Imie_i_nazwisko" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="100" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Reklama" msprop:design-time-name="2a8e5463-11a9-4283-a84d-799e9911f922" msprop:DbTableName="Reklama" msprop:FriendlyName="Reklama" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID_Reklamy" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="6cbc19cb-1778-4c16-affd-acdd4dcf275f" msprop:DbColumnName="ID_Reklamy" msprop:FriendlyName="ID_Reklamy" type="xs:int" />
+                  <xs:element name="Typ" msprop:design-time-name="19a2d7c6-51ce-41e7-8b21-3df4d645e26b" msprop:DbColumnName="Typ" msprop:FriendlyName="Typ" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="19" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Rodzaj" msprop:design-time-name="0d0e7282-9dbc-4a55-ae22-818019526912" msprop:DbColumnName="Rodzaj" msprop:FriendlyName="Rodzaj" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="6" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Ocena" msprop:design-time-name="b7a00073-51bd-4110-b654-cf0cf8ef9327" msprop:DbColumnName="Ocena" msprop:FriendlyName="Ocena" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="7" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Reklamodawca" msprop:design-time-name="f06984ae-e504-496f-87b0-e2379ceea879" msprop:DbTableName="Reklamodawca" msprop:FriendlyName="Reklamodawca" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID_Reklamodawcy" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="4a620733-43c9-4c0f-9826-7728c4eca771" msprop:DbColumnName="ID_Reklamodawcy" msprop:FriendlyName="ID_Reklamodawcy" type="xs:int" />
+                  <xs:element name="Nazwa" msprop:design-time-name="6867d2f2-fc61-484f-957c-e7b0ecbf917d" msprop:DbColumnName="Nazwa" msprop:FriendlyName="Nazwa" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="NIP" msprop:design-time-name="f732caf4-3e46-4670-91c1-1d58c48c3399" msprop:DbColumnName="NIP" msprop:FriendlyName="NIP" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Specjalizacja" msprop:design-time-name="3b93d551-be25-4f14-93be-1c139d0f2295" msprop:DbColumnName="Specjalizacja" msprop:FriendlyName="Specjalizacja" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="30" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Glowna_tematyka" msprop:design-time-name="a6301287-42c4-4288-9c3c-e31ad10995cc" msprop:DbColumnName="Glowna_tematyka" msprop:FriendlyName="Glowna_tematyka" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="30" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="jestAktualne" msprop:design-time-name="380f7902-7afe-40b3-bc85-3b3954a04076" msprop:DbColumnName="jestAktualne" msprop:FriendlyName="jestAktualne" type="xs:int" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Wizyta_w_salonie" msprop:design-time-name="4a69696c-9461-44fd-bdd8-625592791ac9" msprop:DbTableName="Wizyta_w_salonie" msprop:FriendlyName="Wizyta_w_salonie" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ID_Wizyty" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="74d2903c-2a83-4796-8082-0fe4e3768b91" msprop:DbColumnName="ID_Wizyty" msprop:FriendlyName="ID_Wizyty" type="xs:int" />
+                  <xs:element name="ID_Klienta" msprop:design-time-name="c40fa5be-00b1-4c91-9092-c1633de81327" msprop:DbColumnName="ID_Klienta" msprop:FriendlyName="ID_Klienta" type="xs:int" minOccurs="0" />
+                  <xs:element name="ID_Reklamy" msprop:design-time-name="d04ed751-8703-482c-a17b-e8910bd172e2" msprop:DbColumnName="ID_Reklamy" msprop:FriendlyName="ID_Reklamy" type="xs:int" minOccurs="0" />
+                  <xs:element name="ID_Reklamodawcy" msprop:design-time-name="1e121f1b-8ac3-4adb-adac-918ee8601cf9" msprop:DbColumnName="ID_Reklamodawcy" msprop:FriendlyName="ID_Reklamodawcy" type="xs:int" minOccurs="0" />
+                  <xs:element name="ID_Junk" msprop:design-time-name="eebc81f5-7143-4ebd-b53c-88806e912585" msprop:DbColumnName="ID_Junk" msprop:FriendlyName="ID_Junk" type="xs:int" minOccurs="0" />
+                  <xs:element name="Data_Rezerwacji" msprop:design-time-name="1e16e875-321b-466c-9201-fe92bef36eb6" msprop:DbColumnName="Data_Rezerwacji" msprop:FriendlyName="Data_Rezerwacji" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="Data_Odwolania" msprop:design-time-name="9c62303f-6db2-4625-b20a-b53ad4620225" msprop:DbColumnName="Data_Odwolania" msprop:FriendlyName="Data_Odwolania" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="Data_Wizyty" msprop:design-time-name="3baebbe2-106a-4b75-8419-c07fc288bc1a" msprop:DbColumnName="Data_Wizyty" msprop:FriendlyName="Data_Wizyty" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="Czy_widziala_reklame" msprop:design-time-name="1d313c63-a68f-4808-b386-ecc0bf170763" msprop:DbColumnName="Czy_widziala_reklame" msprop:FriendlyName="Czy_widziala_reklame" type="xs:int" minOccurs="0" />
+                  <xs:element name="Kwota_Rachunku" msprop:design-time-name="26f1a9a7-0916-4e25-9cec-73d67aeacb23" msprop:DbColumnName="Kwota_Rachunku" msprop:FriendlyName="Kwota_Rachunku" type="xs:double" minOccurs="0" />
+                  <xs:element name="Czy_Przyszla_Z_Powodu_Reklamy" msprop:design-time-name="a4bc40a4-1bff-48a4-aa44-ae4b4ff390b4" msprop:DbColumnName="Czy_Przyszla_Z_Powodu_Reklamy" msprop:FriendlyName="Czy_Przyszla_Z_Powodu_Reklamy" type="xs:int" minOccurs="0" />
+                  <xs:element name="Cena_Pozyskania_Klienta" msprop:design-time-name="10d6bd65-b554-43fd-8a6a-3ca477eb2974" msprop:DbColumnName="Cena_Pozyskania_Klienta" msprop:FriendlyName="Cena_Pozyskania_Klienta" type="xs:double" minOccurs="0" />
+                  <xs:element name="Czy_Zarezerwowal_kolejna" msprop:design-time-name="be95eea5-d13b-40d8-ba0e-835fb3a2e4ed" msprop:DbColumnName="Czy_Zarezerwowal_kolejna" msprop:FriendlyName="Czy_Zarezerwowal_kolejna" type="xs:int" minOccurs="0" />
+                  <xs:element name="Czy_kupil_zareklamowana_usluge" msprop:design-time-name="cea77839-c4f4-4538-9aee-352ceaab1b5e" msprop:DbColumnName="Czy_kupil_zareklamowana_usluge" msprop:FriendlyName="Czy_kupil_zareklamowana_usluge" type="xs:int" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Data_" />
+          <xs:field xpath="ID_Data" />
+        </xs:unique>
+        <xs:unique name="dbo_Junk_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Junk" />
+          <xs:field xpath="ID_Junk" />
+        </xs:unique>
+        <xs:unique name="dbo_Klient_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Klient" />
+          <xs:field xpath="ID_Klienta" />
+        </xs:unique>
+        <xs:unique name="dbo_Reklama_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Reklama" />
+          <xs:field xpath="ID_Reklamy" />
+        </xs:unique>
+        <xs:unique name="dbo_Reklamodawca_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Reklamodawca" />
+          <xs:field xpath="ID_Reklamodawcy" />
+        </xs:unique>
+        <xs:unique name="dbo_Wizyta_w_salonie_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Wizyta_w_salonie" />
+          <xs:field xpath="ID_Wizyty" />
+        </xs:unique>
+        <xs:keyref name="FK__Wizyta_w___ID_Re__30F848ED" refer="dbo_Reklama_Constraint1">
+          <xs:selector xpath=".//dbo_Wizyta_w_salonie" />
+          <xs:field xpath="ID_Reklamy" />
+        </xs:keyref>
+        <xs:keyref name="FK__Wizyta_w___Data___34C8D9D1" refer="Constraint1">
+          <xs:selector xpath=".//dbo_Wizyta_w_salonie" />
+          <xs:field xpath="Data_Odwolania" />
+        </xs:keyref>
+        <xs:keyref name="FK__Wizyta_w___ID_Ju__32E0915F" refer="dbo_Junk_Constraint1">
+          <xs:selector xpath=".//dbo_Wizyta_w_salonie" />
+          <xs:field xpath="ID_Junk" />
+        </xs:keyref>
+        <xs:keyref name="FK__Wizyta_w___Data___33D4B598" refer="Constraint1">
+          <xs:selector xpath=".//dbo_Wizyta_w_salonie" />
+          <xs:field xpath="Data_Rezerwacji" />
+        </xs:keyref>
+        <xs:keyref name="FK__Wizyta_w___Data___35BCFE0A" refer="Constraint1">
+          <xs:selector xpath=".//dbo_Wizyta_w_salonie" />
+          <xs:field xpath="Data_Wizyty" />
+        </xs:keyref>
+        <xs:keyref name="FK__Wizyta_w___ID_Kl__300424B4" refer="dbo_Klient_Constraint1">
+          <xs:selector xpath=".//dbo_Wizyta_w_salonie" />
+          <xs:field xpath="ID_Klienta" />
+        </xs:keyref>
+        <xs:keyref name="FK__Wizyta_w___ID_Re__31EC6D26" refer="dbo_Reklamodawca_Constraint1">
+          <xs:selector xpath=".//dbo_Wizyta_w_salonie" />
+          <xs:field xpath="ID_Reklamodawcy" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <Beauty_x0020_Salon xmlns="" />
+  </Schema>
+</DataSourceView>

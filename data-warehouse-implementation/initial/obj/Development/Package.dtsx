@@ -1,0 +1,411 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/5/2022 11:33:13 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-18KOAE8"
+  DTS:CreatorName="DESKTOP-18KOAE8\pitya"
+  DTS:DTSID="{2D400FCB-5E2C-4BA2-BFF5-5182DAA48FB7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.948.0"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{CCD0DEA7-6475-4B64-B7CB-59C93616B3FB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[create_dw.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{7EBBFE70-C2D8-4E62-8C54-3411DAFC382F}"
+      DTS:ObjectName="create_dw.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\pitya\Desktop\sql\create_dw.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-18KOAE8]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2AEC5D13-4C98-4B1F-AE1A-92CB96010277}"
+      DTS:ObjectName="DESKTOP-18KOAE8">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-18KOAE8;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-ERH1AKK]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{15A62255-997D-4B69-8321-5252422D8F1C}"
+      DTS:ObjectName="DESKTOP-ERH1AKK">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-ERH1AKK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{15A62255-997D-4B69-8321-5252422D8F1C}DESKTOP-ERH1AKK;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-ERH1AKK 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F40BC34D-FF3A-470E-B37E-8E601763EA68}"
+      DTS:ObjectName="DESKTOP-ERH1AKK 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-ERH1AKK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{F40BC34D-FF3A-470E-B37E-8E601763EA68}DESKTOP-ERH1AKK 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-ERH1AKK 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{80B77075-7438-40E9-92D2-A9CE0896872B}"
+      DTS:ObjectName="DESKTOP-ERH1AKK 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-ERH1AKK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{80B77075-7438-40E9-92D2-A9CE0896872B}DESKTOP-ERH1AKK 2;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-ERH1AKK 3]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6FB6DE6D-40B2-4383-AEBA-ED57F2FAB690}"
+      DTS:ObjectName="DESKTOP-ERH1AKK 3">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-ERH1AKK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{6FB6DE6D-40B2-4383-AEBA-ED57F2FAB690}DESKTOP-ERH1AKK 3;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-ERH1AKK 4]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5885ADEF-6160-40AA-9A74-A40371CD4B36}"
+      DTS:ObjectName="DESKTOP-ERH1AKK 4">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-ERH1AKK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{5885ADEF-6160-40AA-9A74-A40371CD4B36}DESKTOP-ERH1AKK 4;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_DATES.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{313E0109-7173-408F-BF75-636720DA8D50}"
+      DTS:ObjectName="LOAD_DATES.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\pitya\Desktop\sql\LOAD_DATES.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_Klienci.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{FAC3F3D5-0D04-4718-8053-72B026E23210}"
+      DTS:ObjectName="LOAD_Klienci.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\pitya\Desktop\sql\LOAD_Klienci.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_Klienci.sql 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{1B4DB5AE-6175-485D-8761-E379AB11BA26}"
+      DTS:ObjectName="LOAD_Klienci.sql 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\marek\Downloads\MultidimensionalProject1\sqlki\LOAD_Klienci.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_Reklama.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{8490D13F-9742-4BE8-B53F-74A10118CEB9}"
+      DTS:ObjectName="LOAD_Reklama.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\marek\Downloads\MultidimensionalProject1\sqlki\LOAD_Reklama.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_Reklamodawca.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{9A1662E5-129A-4467-806B-D6E227651833}"
+      DTS:ObjectName="LOAD_Reklamodawca.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\pitya\Desktop\sql\LOAD_Reklamodawca.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_Reklamodawca.sql 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{B8AF0A7B-A876-436B-A6BC-6BAED05B18B7}"
+      DTS:ObjectName="LOAD_Reklamodawca.sql 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\marek\Downloads\MultidimensionalProject1\sqlki\LOAD_Reklamodawca.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_Wizyty.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{86A97840-858A-4468-8D96-60843FD5C109}"
+      DTS:ObjectName="LOAD_Wizyty.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\marek\Downloads\MultidimensionalProject1\sqlki\LOAD_Wizyty.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[salon_db_bulk_load.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{0389F79E-161E-4966-B1F3-5CC8C06CF2B8}"
+      DTS:ObjectName="salon_db_bulk_load.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\pitya\Desktop\sql\salon_db_bulk_load.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[salon_db_create.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{61FDF3FA-4638-4152-8B7D-108C71DD5DEE}"
+      DTS:ObjectName="salon_db_create.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\pitya\Desktop\sql\salon_db_create.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load Advertisers Dimension(SCD)"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{88C045F0-4099-4D5E-BE9B-8C8365820F82}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Advertisers Dimension(SCD)"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{15A62255-997D-4B69-8321-5252422D8F1C}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="LOAD_Reklamodawca.sql 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Advertisments Dimension"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{c4d76f75-d375-42cd-b8da-d8caebf8df2f}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Advertisments Dimension"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{80B77075-7438-40E9-92D2-A9CE0896872B}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="LOAD_Reklama.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Customers Dimension"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6B3FCD41-8328-4DB5-92FC-08C6AC8BB0F6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Customers Dimension"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F40BC34D-FF3A-470E-B37E-8E601763EA68}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="LOAD_Klienci.sql 1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load wizyty"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9b81ef92-16d7-483a-adb2-468ed4fbd3cf}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load wizyty"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5885ADEF-6160-40AA-9A74-A40371CD4B36}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="LOAD_Wizyty.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{61CBA26C-2B0A-4ED8-9786-1629ACF2C55E}"
+      DTS:From="Package\Load Customers Dimension"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Load wizyty" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5E1EB74B-EF82-4EDF-B2AB-561F8B91C3A5}"
+      DTS:From="Package\Load Advertisers Dimension(SCD)"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load wizyty" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{88E80A93-BD45-4E39-A81F-25D9CD9C5959}"
+      DTS:From="Package\Load Advertisments Dimension"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Load wizyty" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="237.6,42.4"
+          Id="Package\Load Advertisers Dimension(SCD)"
+          TopLeft="338.303566387455,93.3678554733097" />
+        <NodeLayout
+          Size="164,42.4"
+          Id="Package\Load Advertisments Dimension"
+          TopLeft="397.678575355712,316.033296501112" />
+        <NodeLayout
+          Size="164,42.4"
+          Id="Package\Load Customers Dimension"
+          TopLeft="89.107141529343,105.880355249569" />
+        <NodeLayout
+          Size="164,42.4"
+          Id="Package\Load wizyty"
+          TopLeft="89.107141529343,291.492118250222" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="171.107141529343,148.280355249569">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,143.211763000653"
+              Start="0,0"
+              End="0,135.711763000653">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,135.711763000653" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="457.103566387455,135.76785547331">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-259.996424858112,155.724262776912"
+              Start="0,0"
+              End="-259.996424858112,148.224262776912">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,88.531808316716" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,88.531808316716"
+                    Point2="0,92.531808316716"
+                    Point3="-4,92.531808316716" />
+                  <mssgle:LineSegment
+                    End="-255.996424858112,92.531808316716" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-255.996424858112,92.531808316716"
+                    Point2="-259.996424858112,92.531808316716"
+                    Point3="-259.996424858112,96.531808316716" />
+                  <mssgle:LineSegment
+                    End="-259.996424858112,148.224262776912" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="397.678575355712,337.233296501112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-144.571433826369,-24.5411782508904"
+              Start="0,0"
+              End="-137.071433826369,-24.5411782508904">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-68.2857169131847,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-68.2857169131847,0"
+                    Point2="-72.2857169131847,0"
+                    Point3="-72.2857169131847,-4" />
+                  <mssgle:LineSegment
+                    End="-72.2857169131847,-20.5411782508904" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-72.2857169131847,-20.5411782508904"
+                    Point2="-72.2857169131847,-24.5411782508904"
+                    Point3="-76.2857169131847,-24.5411782508904" />
+                  <mssgle:LineSegment
+                    End="-137.071433826369,-24.5411782508904" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/4/2023 12:12:09 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-ERH1AKK"
+  DTS:CreatorName="DESKTOP-ERH1AKK\marek"
+  DTS:DTSID="{0BC73D35-E1DF-416F-8D6E-C17043BEB9D6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.948.0"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{E0D072A8-4285-495E-8E5F-C6A5E53F8697}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[create_dw.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{91DD4448-BF7A-4B28-A351-C6720228321D}"
+      DTS:ObjectName="create_dw.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\marek\Downloads\MultidimensionalProject1\sqlki\create_dw.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-ERH1AKK]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7597C159-3BF5-43BD-9F3E-AD7DDB9FEF23}"
+      DTS:ObjectName="DESKTOP-ERH1AKK">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-ERH1AKK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{7597C159-3BF5-43BD-9F3E-AD7DDB9FEF23}DESKTOP-ERH1AKK;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-ERH1AKK 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E139FD96-3B2B-410C-96E5-3097864B436B}"
+      DTS:ObjectName="DESKTOP-ERH1AKK 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-ERH1AKK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{E139FD96-3B2B-410C-96E5-3097864B436B}DESKTOP-ERH1AKK 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-ERH1AKK 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E79B66EF-970B-47DE-9106-B4416D396581}"
+      DTS:ObjectName="DESKTOP-ERH1AKK 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-ERH1AKK;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{E79B66EF-970B-47DE-9106-B4416D396581}DESKTOP-ERH1AKK 2;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LOAD_Wizyty.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F831E55C-DFB8-4703-9D06-6867695AA539}"
+      DTS:ObjectName="LOAD_Wizyty.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\marek\Downloads\MultidimensionalProject1\sqlki\LOAD_Wizyty.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Create Data Warehouse base"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{e80a95b9-c991-4d20-abb0-2c4e6aa96a66}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Data Warehouse base"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E79B66EF-970B-47DE-9106-B4416D396581}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="create_dw.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\Create Data Warehouse base"
+          TopLeft="124.285715380494,99.7647064400379" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

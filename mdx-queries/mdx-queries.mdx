@@ -1,0 +1,111 @@
+--Podaj procent wszystkich klientów, którzy dostali ulotkê w ubieg³ym roku. aktualny rok 2020
+with
+	member [Liczba klientow w ubieglym roku] as 'Sum({[Klient].[ID Klienta].children}, [Measures].[ID Klienta Distinct Count])'
+	member [Measures].[Procent wszystkich klientow ktorzy dostali ulotke] as '[Measures].[Ilosc Zauwazen Reklam Sum] / [Liczba klientow w ubieglym roku] * 100',
+																	FORMAT_STRING='#0.##0'
+select
+	{[Measures].[Ilosc Zauwazen Reklam Sum],[Liczba klientow w ubieglym roku],[Measures].[Procent wszystkich klientow ktorzy dostali ulotke]} on columns,
+	{[Reklama].[Typ].&[ulotka]} on rows
+	from [Beauty Salon]
+	where {[Data Wizyty].[Hierarchia_daty].[Rok].&[2019]};
+
+--Porównaj liczbê klientów odwiedzaj¹cych salon na skutek reklam internetowych w obecnym i poprzednim miesi¹cu. aktualnie marzec 2019
+select
+	{[Measures].[Liczba Osob Z Powodu Reklamy Sum]} on 0,
+	CrossJoin({[Reklama].[Typ].&[reklama internetowa]}, {[Data Wizyty].[Hierarchia_daty].[Rok].&[2019].&[luty], [Data Wizyty].[Hierarchia_daty].[Rok].&[2019].&[marzec]}) on 1
+	from [Beauty Salon];
+
+
+-- Porównaj procent klientów odwiedzaj¹cych salon na skutek reklam fizycznych (ulotki oraz billboardy) a internetowych.
+with
+	member [Measures].[Osob z powodu reklamy dowolnego typu] as 'Sum([Reklama].[Typ].[All], [Measures].[Liczba Osob Z Powodu Reklamy Sum])'
+	set [ReklamyFizyczne] as {
+		[Reklama].[Typ].&[billboard],
+		[Reklama].[Typ].&[ulotka]
+	}
+	member [Reklama].[Typ].[Fizyczne]
+		as Aggregate([ReklamyFizyczne])
+	member [Measures].[Procent wszystkich osob z powodu reklamy] as '[Measures].[Liczba Osob Z Powodu Reklamy Sum] / [Measures].[Osob z powodu reklamy dowolnego typu] * 100',
+																	FORMAT_STRING='#.##0'
+select
+	{[Measures].[Procent wszystkich osob z powodu reklamy]} on columns,
+	Order(
+		Union(
+			[Reklama].[Typ].&[reklama internetowa],
+			[Reklama].[Typ].[Fizyczne]
+		),[Measures].[Liczba Osob Z Powodu Reklamy Sum],
+		desc
+	) on rows
+	from [Beauty Salon];
+
+--Jaki procent osób po zobaczeniu reklamy danej us³ugi, decyduje siê na jej zakup. 
+with
+	member [Liczba klientow] as 'Sum(([Junk].[Czy Widzial Reklame].&[tak],[Reklama].[Rodzaj].&[Usluga]), [Measures].[ID Klienta Distinct Count])'	member [Measures].[Procent calosci] as '[Measures].[Czy Kupil Zareklamowana Usluge Sum] / [Liczba klientow] * 100',
+																	FORMAT_STRING='#0.##0'
+select
+	{[Measures].[Procent calosci], [Measures].[Czy Kupil Zareklamowana Usluge Sum]} on 0,
+	non empty {([Reklama].[Rodzaj].&[Usluga],[Junk].[Czy Widzial Reklame].[Czy Widzial Reklame])} on 1
+	from [Beauty Salon];
+
+
+
+--Reklamy ktorego reklamodawcy przyciagnely najwieksza liczbe osob
+select 
+	{[Measures].[Liczba Osob Z Powodu Reklamy Sum]} on columns,
+	{Order([Reklamodawca].[Nazwa].children, [Measures].[Liczba Osob Z Powodu Reklamy Sum], DESC)} on rows
+	from [Beauty Salon];
+
+-- Porównaj efektywnoœæ reklam odnoœnie us³ugi a salonu w ostatnim kwartale. aktualnie styczen 2021
+select
+	{[Measures].[Cena_Pozyskania_Klienta]} on columns,
+	{[Reklama].[Rodzaj].&[Salon], [Reklama].[Rodzaj].&[Usluga]} on rows
+	from [Beauty Salon]
+	where {[Data Wizyty].[Hierarchia_daty].[Rok].&[2020].&[paŸdzierni],
+		[Data Wizyty].[Hierarchia_daty].[Rok].&[2020].&[listopad],
+		[Data Wizyty].[Hierarchia_daty].[Rok].&[2020].&[grudzieñ]};
+
+-- Jaka jest relacja miêdzy œredni¹ ocen¹ reklamy, a iloœci¹ klientów przez ni¹ przyci¹gniêtych
+select
+	{[Measures].[Liczba Osob Z Powodu Reklamy Sum]} on 0,
+	non empty {[Reklama].[Ocena].[All].children} on 1
+	from [Beauty Salon];
+
+
+-- Jaki procent klientów po zobaczeniu reklamy decyduje siê na rezerwacjê kolejnej wizyty.with	member [Liczba zarezerwowan] as 'Sum(([Junk].[Czy Widzial Reklame].&[tak], [Junk].[Czy Zarezerwowal Kolejna].[All]), [Measures].[ID Klienta Distinct Count])'	member [Measures].[Procent calosci] as '[Measures].[ID Klienta Distinct Count] / [Liczba zarezerwowan] * 100',
+																	FORMAT_STRING='#0.##0'select
+	{[Measures].[ID Klienta Distinct Count], [Measures].[Procent calosci]} on 0,
+	{([Junk].[Czy Widzial Reklame].&[tak], [Junk].[Czy Zarezerwowal Kolejna].&[tak])} on 1
+	from [Beauty Salon];
+
+--Porównaj relacje ceny do iloœci klientów ka¿dego typu reklamy. 
+select
+	{[Measures].[Cena_Pozyskania_Klienta]} on 0,
+	non empty {[Reklama].[Typ].[All].children} on 1
+	from [Beauty Salon];
+
+
+--SprawdŸ relacjê pomiêdzy kwot¹ rachunku, a tym, czy klient przyszed³ na skutek reklamy internetowej. SELECT NON EMPTY { [Measures].[Kwota_Rachunku] } ON COLUMNS, NON EMPTY { ([Junk].[Czy Przyszla z Powodu Reklamy].[Czy Przyszla z Powodu Reklamy].ALLMEMBERS * [Reklama].[Typ].[Typ].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [Beauty Salon] CELL PROPERTIES VALUE
+--Porównaj efektywnoœæ reklam odnoœnie us³ugi a salonu w ostatnim kwartaleselect 
+	{[Measures].[Cena_Pozyskania_Klienta]} on 0,
+	non empty {crossjoin({[Data Rezerwacji].[Hierarchia_daty].[Rok].&[2017].&[kwiecieñ],
+	[Data Rezerwacji].[Hierarchia_daty].[Rok].&[2017].&[maj],
+	[Data Rezerwacji].[Hierarchia_daty].[Rok].&[2017].&[czerwiec]}, [Reklama].[Rodzaj].[All].children)} on 1
+	from [Beauty Salon];
+
+--Podaj firmê, której reklamy s¹ najlepiej oceniane. 
+select
+	{[Measures].[Liczba Osob Z Powodu Reklamy Sum]} on 0,
+	non empty {[Reklamodawca].[ID Reklamodawcy].[All].children} on 1
+	from [Beauty Salon];
+
+--Czy firmy, których g³ówn¹ tematyk¹ jest bran¿a kosmetyczna tworz¹ reklamy, które przyci¹gaj¹ wiêcej klientów ni¿ inne? 
+select
+	{[Measures].[ID Klienta Distinct Count]} on 0,
+	non empty order([Reklamodawca].[Glowna Tematyka].[All].children, [Measures].[ID Klienta Distinct Count], DESC) on 1
+	from [Beauty Salon];
+
+--Który reklamodawca przyci¹gn¹³ najwiêksz¹ iloœæ klientów
+select
+	{[Measures].[ID Klienta Distinct Count]} on 0,
+	non empty {topcount({([Reklamodawca].[Nazwa].[All].children, [Junk].[Czy Przyszla z Powodu Reklamy].&[tak])}, 1, [Measures].[ID Klienta Distinct Count])} on 1
+	from [Beauty Salon];
